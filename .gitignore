@@ -1,78 +1,5 @@
 
-# Created by https://www.gitignore.io/api/c,vim,c++,perl,emacs,python
-
-### C ###
-# Prerequisites
-*.d
-
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
-
-### C++ ###
-# Prerequisites
-
-# Compiled Object files
-*.slo
-
-# Precompiled Headers
-
-# Compiled Dynamic libraries
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-
-# Executables
+# Created by https://www.gitignore.io/api/vim,emacs,python
 
 ### Emacs ###
 # -*- mode: gitignore; -*-
@@ -121,42 +48,6 @@ flycheck_*.el
 # directory configuration
 .dir-locals.el
 
-### Perl ###
-!Build/
-.last_cover_stats
-/META.yml
-/META.json
-/MYMETA.*
-*.pm.tdy
-*.bs
-
-# Devel::Cover
-cover_db/
-
-# Devel::NYTProf
-nytprof.out
-
-# Dizt::Zilla
-/.build/
-
-# Module::Build
-_build/
-Build
-Build.bat
-
-# Module::Install
-inc/
-
-# ExtUtils::MakeMaker
-/blib/
-/_eumm/
-/*.gz
-/Makefile
-/Makefile.old
-/MANIFEST.bak
-/pm_to_blib
-/*.zip
-
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -164,6 +55,7 @@ __pycache__/
 *$py.class
 
 # C extensions
+*.so
 
 # Distribution / packaging
 .Python
@@ -301,4 +193,4 @@ tags
 [._]*.un~
 
 
-# End of https://www.gitignore.io/api/c,vim,c++,perl,emacs,python
+# End of https://www.gitignore.io/api/vim,emacs,python
