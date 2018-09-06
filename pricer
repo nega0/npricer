@@ -21,7 +21,7 @@ def main(ts):
             warn("Invalid input, bad timestamp")
             continue
 
-        if ln[1] != 'A' or ln[1] != 'R':
+        if ln[1] != 'A' and ln[1] != 'R':
             warn("Invalid input, unknown record type")
             continue
 
@@ -29,20 +29,23 @@ def main(ts):
 
         # Add-order sell/buy?
         if (ln[1] == 'A' and
-           (ln[3] != 'S' or ln[3] != 'B')):
+           (ln[3] != 'S' and ln[3] != 'B')):
             warn("Invalid input, add-order is neither sell nor buy")
             continue
 
-        if ln[1] == 'R' and not isinstance(ln[3], numbers.Integral):
+        if ln[1] == 'R' and not isinstance(int(ln[3]), numbers.Integral):
             warn("Invalid input, number of shares in reduce-order is not an integer")
+            sys.exit(-1)
             continue
 
-        if not isinstance(ln[4], numbers.Number):
+        if ln[1] == 'A' and not isinstance(float(ln[4]), numbers.Number):
             warn("Invalid input, add-order price is not a number")
+            sys.exit(-1)
             continue
 
-        if not isinstance(ln[4], numbers.Integral):
+        if ln[1] == 'A' and not isinstance(int(ln[5]), numbers.Integral):
             warn("Invalid input, add-order shares is not an integer")
+            sys.exit(-1)
             continue
 
         print(ln)
