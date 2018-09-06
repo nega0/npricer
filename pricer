@@ -1,9 +1,66 @@
 #!/usr/bin/env python # -*- mode: python -*-
 
 
-def main():
-    pass
+from __future__ import print_function
+from warnings import warn
+import numbers
+import sys
+
+
+def main(ts):
+    for line in sys.stdin:
+        ln = line.split()
+
+        # validate input
+        if ((ln[1] == 'R' and len(ln) > 4) or
+           (len(ln) > 6)):
+            warn("Invalid input, garbage at end of line")
+            continue
+
+        if 0 <= ln[0] <= 86400000:
+            warn("Invalid input, bad timestamp")
+            continue
+
+        if ln[1] != 'A' or ln[1] != 'R':
+            warn("Invalid input, unknown record type")
+            continue
+
+        # does order-id have a format?
+
+        # Add-order sell/buy?
+        if (ln[1] == 'A' and
+           (ln[3] != 'S' or ln[3] != 'B')):
+            warn("Invalid input, add-order is neither sell nor buy")
+            continue
+
+        if ln[1] == 'R' and not isinstance(ln[3], numbers.Integral):
+            warn("Invalid input, number of shares in reduce-order is not an integer")
+            continue
+
+        if not isinstance(ln[4], numbers.Number):
+            warn("Invalid input, add-order price is not a number")
+            continue
+
+        if not isinstance(ln[4], numbers.Integral):
+            warn("Invalid input, add-order shares is not an integer")
+            continue
+
+        print(ln)
+
+
+def check_args():
+    if len(sys.argv) != 2:
+        print(sys.argv[0], "requires a target size, provided as an integer.")
+        sys.exit(-1)
+
+    try:
+        ts = int(sys.argv[1])
+    except ValueError:
+        print("Provided argument (target size) is not an integer,")
+        sys.exit(-1)
+
+    return ts
 
 
 if __name__ == '__main__':
-    main()
+    main(check_args())
